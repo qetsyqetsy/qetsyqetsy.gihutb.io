@@ -2,7 +2,6 @@
 const apiKey = "8142c403b2800719c51e0bde7c70d63f";
 const baseUrl = "https://ws.audioscrobbler.com/2.0/";
 
-
 // Define Last.fm API method to get similar artists
 const method = "artist.getsimilar";
 
@@ -11,9 +10,9 @@ const artistInput = document.getElementById("artist-input");
 const findSimilarButton = document.getElementById("find-similar-button");
 const recommendedArtistsList = document.getElementById("recommended-artists-list");
 
-// Set up event listener for Find Similar Artists button
+// Add event listener to button
 findSimilarButton.addEventListener("click", () => {
-  // Get artist name from input field
+  // Get user input
   const artist = artistInput.value;
 
   // Set API parameters
@@ -41,13 +40,13 @@ findSimilarButton.addEventListener("click", () => {
       const similarArtists = data.similarartists.artist.map((artist) => artist.name);
       // Randomly select 10 similar artists
       const recommendedArtists = shuffleArray(similarArtists).slice(0, 10);
-      // Clear previous results from list
+      // Clear existing list items
       recommendedArtistsList.innerHTML = "";
-      // Add recommended artists to list
+      // Add each recommended artist to the list
       recommendedArtists.forEach((artist) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = artist;
-        recommendedArtistsList.appendChild(listItem);
+        const li = document.createElement("li");
+        li.textContent = artist;
+        recommendedArtistsList.appendChild(li);
       });
     })
     .catch((error) => {

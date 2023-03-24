@@ -1,6 +1,6 @@
 // Set up API key and base URL
 const apiKey = "8142c403b2800719c51e0bde7c70d63f";
-const baseUrl = "http://ws.audioscrobbler.com/2.0/";
+const baseUrl = "https://ws.audioscrobbler.com/2.0/";
 
 // Define Last.fm API method to get similar artists
 const method = "artist.getsimilar";

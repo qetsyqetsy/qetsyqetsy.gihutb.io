@@ -5,41 +5,58 @@ const baseUrl = "http://ws.audioscrobbler.com/2.0/";
 // Define Last.fm API method to get similar artists
 const method = "artist.getsimilar";
 
-// Prompt user for input artist
-const artist = prompt("Enter an artist to get similar artists:");
+// Select HTML elements
+const form = document.querySelector("form");
+const input = document.querySelector("#artist-input");
+const button = document.querySelector("#find-similar-button");
+const recommendedArtistsList = document.querySelector("#recommended-artists-list");
 
-// Set API parameters
-const params = new URLSearchParams({
-  method: method,
-  artist: artist,
-  api_key: apiKey,
-  format: "json",
-  limit: 100,
-});
-
-// Send API request
-fetch(`${baseUrl}?${params}`)
-  .then((response) => {
-    // Check if request was successful
-    if (response.ok) {
-      // Parse JSON response
-      return response.json();
-    } else {
-      throw new Error(`Error ${response.status}: ${response.statusText}`);
-    }
-  })
-  .then((data) => {
-    // Get list of similar artists
-    const similarArtists = data.similarartists.artist.map((artist) => artist.name);
-    // Randomly select 10 similar artists
-    const recommendedArtists = shuffleArray(similarArtists).slice(0, 10);
-    // Output recommended artists
-    console.log(`Recommended artists similar to ${artist}:`);
-    recommendedArtists.forEach((artist) => console.log(artist));
-  })
-  .catch((error) => {
-    console.error(error);
+// Add event listener to form submit
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  // Get input value
+  const artist = input.value;
+  // Set API parameters
+  const params = new URLSearchParams({
+    method: method,
+    artist: artist,
+    api_key: apiKey,
+    format: "json",
+    limit: 100,
   });
+  // Send API request
+  fetch(`${baseUrl}?${params}`)
+    .then((response) => {
+      // Check if request was successful
+      if (response.ok) {
+        // Parse JSON response
+        return response.json();
+      } else {
+        throw new Error(`Error ${response.status}: ${response.statusText}`);
+      }
+    })
+    .then((data) => {
+      // Get list of similar artists
+      const similarArtists = data.similarartists.artist.map((artist) => artist.name);
+      // Randomly select 10 similar artists
+      const recommendedArtists = shuffleArray(similarArtists).slice(0, 10);
+      // Clear previous recommendations
+      recommendedArtistsList.innerHTML = "";
+      // Add each recommended artist to the list as a clickable link to a YouTube search of the artist
+      recommendedArtists.forEach((artist) => {
+        const listItem = document.createElement("li");
+        const link = document.createElement("a");
+        link.textContent = artist;
+        link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(artist)}`;
+        link.target = "_blank";
+        listItem.appendChild(link);
+        recommendedArtistsList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+});
 
 // Helper function to shuffle an array
 function shuffleArray(array) {

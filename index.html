@@ -1,89 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Similar Artists Finder</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-        margin: 0;
-        padding: 0;
-      }
-css
-Copy code
-  h1 {
-    color: #333;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    text-align: center;
-  }
-  
-  form {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  label {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"] {
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  button {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #555;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    width: 80%;
-  }
-  
-  li {
-    font-size: 16px;
-    color: #333;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 4px;
-    margin-bottom: 10px;
-  }
-</style>
+    <meta charset="UTF-8">
+    <title>Home</title>
   </head>
   <body>
-    <div>
-      <h1>Find Similar Artists</h1>
-      <form>
-        <div>
-          <label for="artist-input">Enter an artist name:</label>
-          <input type="text" id="artist-input">
-        </div>
-        <button id="find-similar-button">Find Similar Artists</button>
-      </form>
-      <ul id="recommended-artists-list"></ul>
-    </div>
-    <script src="../javascript/similar_artist.js"></script>
+    <h1>Welcome to my website</h1>
+    <button onclick="location.href='./html/similar_artist.html'">Find Similar Artists</button>
+    <script>
+      document.title = "Similar Artists";
+    </script>
   </body>
-</html> 
+</html>

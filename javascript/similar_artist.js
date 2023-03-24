@@ -48,9 +48,19 @@ findSimilarButton.addEventListener("click", () => {
         li.textContent = artist;
         recommendedArtistsList.appendChild(li);
       });
+      // Check if no recommended artists were found
+      if (recommendedArtists.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "No similar artists found.";
+        recommendedArtistsList.appendChild(li);
+      }
     })
     .catch((error) => {
       console.error(error);
+      // Display error message to user
+      const li = document.createElement("li");
+      li.textContent = "Error retrieving similar artists. Please try again later.";
+      recommendedArtistsList.appendChild(li);
     });
 });
 

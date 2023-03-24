@@ -2,13 +2,66 @@
 <html>
   <head>
     <title>Similar Artists Finder</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-right: 10px;
+        width: 300px;
+      }
+      button {
+        font-size: 16px;
+        background-color: #008CBA;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: #00678f;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+    </style>
   </head>
   <body>
     <h1>Find Similar Artists</h1>
-    <p>Enter an artist name:</p>
-    <input type="text" id="artist-input">
-    <button id="find-similar-button">Find Similar Artists</button>
-    <ul id="recommended-artists-list"></ul>
+    <div class="container">
+      <form>
+        <label for="artist-input">Enter an artist name:</label>
+        <input type="text" id="artist-input">
+        <button id="find-similar-button">Find</button>
+      </form>
+      <ul id="recommended-artists-list"></ul>
+    </div>
     <script src="/javascript/similar_artist.js"></script>
   </body>
 </html>
